@@ -10,7 +10,7 @@ var coupon = document.getElementById('coupon');
 /**
  * settings
  */
-var defaultPrice = 50;
+var defaultPrice = 20;
 var coupons = ['sconto2021', 'sconto-bool'];
 var discount = 0.3;
 writePrice(defaultPrice, priceEl);
@@ -21,10 +21,11 @@ writePrice(defaultPrice, priceEl);
 button.addEventListener('click', function(){
 
   // controllo del nome
-  var nomeInserito = nameUser.value.trim();
+  
 
   // verifico la presenza del nome
-  if(nomeInserito.length === 0){
+  console.log(nomeVuoto());
+  if(nomeVuoto()){
     alert("Inserisci il nome del burger");
   }else{
 
@@ -74,4 +75,15 @@ function calcPrice(value, target){
 // riceve il velare da scrivere e l'elemento dove deve esere scritto
 function writePrice(value, target){
   target.innerHTML = value.toFixed(2);
+}
+
+function nomeVuoto(){
+  var vuoto;
+  var nomeInserito = nameUser.value.trim();
+  if(nomeInserito.length === 0){
+    vuoto = true;
+  } else {
+    vuoto = false;
+  }
+  return vuoto;
 }
